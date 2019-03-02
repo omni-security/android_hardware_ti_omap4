@@ -41,11 +41,17 @@ PRODUCT_PACKAGES += \
     tf_daemon \
     libtf_crypto_sst
 
+ifeq ($(BOARD_USE_TI_LIBION),false)
 PRODUCT_PACKAGES += \
     libion
-
-# pvr-related objects
+else
 PRODUCT_PACKAGES += \
+    libion_ti
+endif
+
+# symlinks and pvr files
+PRODUCT_PACKAGES += \
+    libion.so \
     pvrsrvinit \
     libEGL_POWERVR_SGX54X \
     libPVRScopeServices.so
